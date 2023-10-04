@@ -1,22 +1,13 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,jsonify
 
 app=Flask(__name__)
 
 @app.route("/")
 def home():
-
-    return render_template("home.html")
-@app.route("/about",methods=["GET","POST"])
-def about():
-    if request.method=="POST":
-        num1=int(request.form["num1"])
-        num2=int(request.form["num2"])
-        result=num1+num2
-    
-
-        return render_template("about.html", result={"result":result})
-    else:
-        return render_template("about.html", result={"result":"result"})
+    name="Huzaifa"
+    age=22
+    data={"name":name,"age":age}
+    return jsonify(data)
 
 
 if __name__ == "__main__":
